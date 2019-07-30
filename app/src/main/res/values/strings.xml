@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NewBooks</string>
+    <string name="error_data_message">Error loading Data From Google Books</string>
+    <string name="title_text">Title Text</string>
+    <string name="bookimage">BookImage</string>
+    <string name="search">Search</string>
+</resources>
