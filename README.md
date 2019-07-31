@@ -1,2 +1,2 @@
 # alcTrialsAndroid
-link app with google google books api
+This Applications displays books from the google books api
