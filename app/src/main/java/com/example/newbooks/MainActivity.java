@@ -18,10 +18,8 @@ import android.support.v7.widget.SearchView;
 
 
 import com.example.newbooks.Adapters.BooksAdapter;
-import com.example.newbooks.Models.Book;
 import com.example.newbooks.Utils.ApiUtil;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -29,11 +27,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     private ProgressBar mLoadingProgress;
     private RecyclerView rvBooks;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

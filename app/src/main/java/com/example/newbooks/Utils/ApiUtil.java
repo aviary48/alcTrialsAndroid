@@ -3,7 +3,7 @@ package com.example.newbooks.Utils;
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.newbooks.Models.Book;
+import com.example.newbooks.Book;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -101,6 +101,11 @@ public class ApiUtil {
         final String PUBLISHED_DATE ="publishedDate";
         final String ITEMS = "items";
         final String VOLUMEINFO = "volumeInfo";
+        final String DESCRIPTION = "description";
+        final String IMAGELINKS = "imageLinks";
+        final String THUMBNAIL = "thumbnail";
+
+
 
 
 //        ArrayList<Book> books = null;
@@ -116,6 +121,7 @@ public class ApiUtil {
                 JSONObject bookJSON =  arrayBooks.getJSONObject(i);
                 JSONObject volumeInfoJSON = bookJSON.getJSONObject(VOLUMEINFO);
 
+                JSONObject imageLinksJSON = volumeInfoJSON.getJSONObject(IMAGELINKS);
                 //getting authors and put them in a string array
 
                 int authorNum = volumeInfoJSON.getJSONArray(AUTHORS).length();
@@ -133,16 +139,14 @@ public class ApiUtil {
                         (volumeInfoJSON.isNull(SUBTITLE) ? "" : volumeInfoJSON.getString(SUBTITLE)),
                         authors,
                         volumeInfoJSON.getString(PUBLISHER),
-                        volumeInfoJSON.getString(PUBLISHED_DATE)
+                        volumeInfoJSON.getString(PUBLISHED_DATE),
+                        volumeInfoJSON.getString(DESCRIPTION),
+                        imageLinksJSON.getString(THUMBNAIL)
 
                 );
                 //adding the new book to  books list array
 
                 books.add(book);
-
-
-
-
 
             }
 

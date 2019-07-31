@@ -1,6 +1,7 @@
 package com.example.newbooks.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.newbooks.Models.Book;
+import com.example.newbooks.BookDetail;
+import com.example.newbooks.Book;
 import com.example.newbooks.R;
 
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class BooksAdapter extends  RecyclerView.Adapter<BooksAdapter.BookViewHol
         return books.size();
     }
 
-    public class BookViewHolder extends RecyclerView.ViewHolder {
+    public class BookViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tvTitle, tvAuthors,tvDate, tvPublisher;
 
@@ -61,22 +63,12 @@ public class BooksAdapter extends  RecyclerView.Adapter<BooksAdapter.BookViewHol
             tvDate = (TextView) itemView.findViewById(R.id.tvPublishedDate);
             tvPublisher = (TextView) itemView.findViewById(R.id.tvAuthors);
 
+            itemView.setOnClickListener(this);
+
         }
         public void bind(Book book){
             tvTitle.setText(book.title);
-            String authors = "";
-            int i =0;
-            for (String author:book.authors){
-                authors += author;
-                i++;
-
-                if (i<book.authors.length){
-                    author += ", ";
-                }
-
-
-            }
-            tvAuthors.setText(authors);
+            tvAuthors.setText(book.authors);
             tvDate.setText(book.publishedDate);
             tvPublisher.setText(book.publisher);
 
@@ -84,5 +76,17 @@ public class BooksAdapter extends  RecyclerView.Adapter<BooksAdapter.BookViewHol
 
         }
 
+        @Override
+        public void onClick(View view) {
+
+            int position = getAdapterPosition();
+            Book selectedBook = books.get(position);
+
+            Intent intent  = new Intent(view.getContext(), BookDetail.class);
+            intent.putExtra("Book", selectedBook);
+            view.getContext().startActivity(intent);
+
+
+        }
     }
 }
