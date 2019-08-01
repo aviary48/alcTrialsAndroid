@@ -140,6 +140,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                             (queryParams[0] == null) ?"":queryParams[3]
                     );
 
+
+
                     new BookQueryTask().execute(bookUrl);
 
 
