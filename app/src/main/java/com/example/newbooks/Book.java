@@ -43,6 +43,8 @@ public class Book implements Parcelable {
         thumbnail = in.readString();
     }
 
+
+
     public static final Creator<Book> CREATOR = new Creator<Book>() {
         @Override
         public Book createFromParcel(Parcel in) {
@@ -54,6 +56,8 @@ public class Book implements Parcelable {
             return new Book[size];
         }
     };
+
+
 
     @Override
     public int describeContents() {
